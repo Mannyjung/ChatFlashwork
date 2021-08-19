@@ -3,7 +3,7 @@ const port = process.env.PORT || 4000;
 const http = require('http').createServer(app)
 const io = require('socket.io')(http,{
   cors: {
-    origin: "https://serverchat-flaswork.herokuapp.com/",
+    origin: "https://flashwork.herokuapp.com/",
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true
