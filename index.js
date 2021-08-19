@@ -9,16 +9,23 @@ const io = require('socket.io')(http,{
   //   allowedHeaders: ["my-custom-header"],
   //   credentials: true
   // }
-  origins: ["https://flashwork.herokuapp.com"],
-  handlePreflightRequest: (req, res) => {
-    res.writeHead(200, {
-      "Access-Control-Allow-Origin": "https://flashwork.herokuapp.com",
-      "Access-Control-Allow-Methods": "GET,POST",
-      "Access-Control-Allow-Headers": "my-custom-header",
-      "Access-Control-Allow-Credentials": true
-    });
-    res.end();
-  }
+  cors: {
+    origin: "https://flashwork.herokuapp.com",
+    methods: ["GET", "POST"],
+    credentials: true,
+    transports: ['websocket', 'polling'],
+},
+allowEIO3: true
+  // origins: ["https://flashwork.herokuapp.com"],
+  // handlePreflightRequest: (req, res) => {
+  //   res.writeHead(200, {
+  //     "Access-Control-Allow-Origin": "https://flashwork.herokuapp.com",
+  //     "Access-Control-Allow-Methods": "GET,POST",
+  //     "Access-Control-Allow-Headers": "my-custom-header",
+  //     "Access-Control-Allow-Credentials": true
+  //   });
+  //   res.end();
+  // }
 });
 const { timeStamp } = require('console');
 const mysql = require("mysql");
