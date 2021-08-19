@@ -1,6 +1,6 @@
 const app = require('express')
 const port = process.env.PORT || 4000;
-const http = require('http').Server(app)
+const http = require('http').createServer(app)
 const cors = require("cors");
 const io = require('socket.io')(http,{
   // cors: {
@@ -16,16 +16,6 @@ const io = require('socket.io')(http,{
     transports: ['websocket', 'polling'],
 },
 allowEIO3: true
-  // origins: ["https://flashwork.herokuapp.com"],
-  // handlePreflightRequest: (req, res) => {
-  //   res.writeHead(200, {
-  //     "Access-Control-Allow-Origin": "https://flashwork.herokuapp.com",
-  //     "Access-Control-Allow-Methods": "GET,POST",
-  //     "Access-Control-Allow-Headers": "my-custom-header",
-  //     "Access-Control-Allow-Credentials": true
-  //   });
-  //   res.end();
-  // }
 });
 const { timeStamp } = require('console');
 const mysql = require("mysql");
