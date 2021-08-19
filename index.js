@@ -1,6 +1,7 @@
 const app = require('express')
 const port = process.env.PORT || 4000;
 const http = require('http').createServer(app)
+const cors = require("cors");
 const io = require('socket.io')(http,{
   cors: {
     origin: "https://flashwork.herokuapp.com/",
