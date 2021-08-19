@@ -1,7 +1,14 @@
 const app = require('express')
 const port = process.env.PORT || 4000;
 const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+const io = require('socket.io')(http,{
+  cors: {
+    origin: "https://serverchat-flaswork.herokuapp.com/",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  }
+});
 const { timeStamp } = require('console');
 const mysql = require("mysql");
 var moment = require('moment-timezone');
