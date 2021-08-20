@@ -2,21 +2,22 @@ const app = require('express')
 const port = process.env.PORT || 4000;
 const http = require('http').createServer(app)
 const cors = require("cors");
-const io = require('socket.io')(http,{
-  // cors: {
-  //   origin: "https://flashwork.herokuapp.com/",
-  //   methods: ["GET", "POST"],
-  //   allowedHeaders: ["my-custom-header"],
-  //   credentials: true
-  // }
-  cors: {
-    origin: "https://flashwork.herokuapp.com",
-    methods: ["GET", "POST"],
-    credentials: true,
-    transports: ['websocket', 'polling'],
-},
-allowEIO3: true
-});
+const io = require('socket.io')(http);
+//   ,{
+//   // cors: {
+//   //   origin: "https://flashwork.herokuapp.com/",
+//   //   methods: ["GET", "POST"],
+//   //   allowedHeaders: ["my-custom-header"],
+//   //   credentials: true
+//   // }
+//   cors: {
+//     origin: "https://flashwork.herokuapp.com",
+//     methods: ["GET", "POST"],
+//     credentials: true,
+//     transports: ['websocket', 'polling'],
+// },
+// allowEIO3: true
+// });
 const { timeStamp } = require('console');
 const mysql = require("mysql");
 var moment = require('moment-timezone');
