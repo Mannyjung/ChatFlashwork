@@ -3,21 +3,6 @@ const port = process.env.PORT || 4000;
 const http = require('http').createServer(app)
 const cors = require("cors");
 const io = require('socket.io')(http);
-//   ,{
-//   // cors: {
-//   //   origin: "https://flashwork.herokuapp.com/",
-//   //   methods: ["GET", "POST"],
-//   //   allowedHeaders: ["my-custom-header"],
-//   //   credentials: true
-//   // }
-//   cors: {
-//     origin: "https://flashwork.herokuapp.com",
-//     methods: ["GET", "POST"],
-//     credentials: true,
-//     transports: ['websocket', 'polling'],
-// },
-// allowEIO3: true
-// });
 const { timeStamp } = require('console');
 const mysql = require("mysql");
 var moment = require('moment-timezone');
@@ -28,7 +13,12 @@ const connection = mysql.createConnection({
   "password": "c44546827b4e592",
   "database": "heroku_445ab042636a46a"
 });
-
+router.get('/', function(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true); 
+});
 // connect
 connection.connect(function (error) {
 });
