@@ -1,4 +1,11 @@
 const app = require('express')
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true); 
+  next();
+});
 const port = process.env.PORT || 4000;
 const http = require('http').createServer(app)
 const cors = require("cors");
@@ -13,13 +20,7 @@ const connection = mysql.createConnection({
   "password": "c44546827b4e592",
   "database": "heroku_445ab042636a46a"
 });
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true); 
-  next();
-});
+
 // connect
 connection.connect(function (error) {
 });
@@ -56,3 +57,8 @@ io.on("connection", socket => {
 http.listen(port, function () {
   console.log(`listening on port ${port}`)
 })
+
+export function use(arg0: (req: any, res: any, next: any) => void) {
+  throw new Error('Function not implemented.');
+}
+
