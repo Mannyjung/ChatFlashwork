@@ -5,6 +5,7 @@ const app = require('express')
 //   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 //   res.setHeader('Access-Control-Allow-Credentials', true); 
 // });
+
 const port = process.env.PORT || 4000;
 const http = require('http').createServer(app)
 const cors = require("cors");
