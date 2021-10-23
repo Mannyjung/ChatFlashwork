@@ -1,10 +1,9 @@
 const app = require('express')
-app.use(function (req, res, next) {
+router.get('/', function(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
+  res.setHeader('Access-Control-Allow-Credentials', true); 
 });
 const port = process.env.PORT || 4000;
 const http = require('http').createServer(app)
